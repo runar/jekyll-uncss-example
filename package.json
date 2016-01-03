@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "clean-css": "^3.4.8",
     "glob": "^5.0.10",
     "uncss": "^0.12.1"
   }

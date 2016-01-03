@@ -1,4 +1,5 @@
 var uncss = require('uncss')
+var cleancss = require('clean-css')
 var glob = require('glob')
 var fs = require('fs')
 
@@ -22,7 +23,13 @@ var jekyllUncss = function() {
         console.log(err)
       }
 
-      fs.writeFileSync(sourceStylesheetLocation + 'un.' + stylesheetName, output)
+      new cleancss().minify(output, function(err, minified) {
+        if (err) {
+          console.log(err)
+        }
+
+        fs.writeFileSync(sourceStylesheetLocation + 'un.' + stylesheetName, minified.styles)
+      })
     })
   })
 }
